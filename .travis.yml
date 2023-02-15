@@ -8,3 +8,13 @@ before_install:
 
 script:
   - docker run -e CI=true senkonrad/docker-project npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "docker-project"
+  env: "Dockerproject-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-785875282557"
+  bucket_path: "docker-procject"
+  on:
+  branch: main
